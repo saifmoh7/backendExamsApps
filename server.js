@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 
 const userRouter = require("./routers/userRouter.js");
+const examRouter = require("./routers/examRouter.js");
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', userRouter);
+app.use('/api/exams', examRouter);
 
 app.listen(port, () => {
     console.log(`Server at http://localhost:${port}`)
