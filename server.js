@@ -33,6 +33,6 @@ app.use('/api/users', userRouter);
 app.use('/api/exams', examRouter);
 app.use('/api/questions', questionRouter);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Server at http://localhost:${port}`)
 })
