@@ -6,8 +6,8 @@ const questionSchema = require("../mudels/questionModel");
 const questionRouter = express.Router();
 
 questionRouter.post('/addquestion', expressAsyncHandler(async (req, res) => {
-    const exam = await Exam.findOne({examId: req.body.examId})
-    
+    const exam = await Exam.findOne({_id: req.body.examId})
+    console.log(exam)
     const question = {
         _id: stringGenerator(16),
         question : req.body.question,
@@ -17,7 +17,8 @@ questionRouter.post('/addquestion', expressAsyncHandler(async (req, res) => {
         option_1: req.body.option_1,
         option_2: req.body.option_2,
         option_3: req.body.option_3,
-        option_4: req.body.option_4
+        option_4: req.body.option_4,
+        source: req.body.source
     }
     exam.questions.push(question)
     const addQustion = await exam.save();
@@ -40,9 +41,6 @@ questionRouter.post('/showquestions', expressAsyncHandler(async (req, res) => {
 questionRouter.post('/deleteques', expressAsyncHandler(async (req, res) => {
     try {
         const deletQues = await Exam.updateOne({_id: req.body.examId}, {$pull: {"questions": {_id: req.body.quesId}}})
-        // const questions = exam.questions
-        // const deletQues = questions.filter(Object => Object._id===req.body.quesId)
-
 
         if (deletQues) {
             res.json({status:200, message: "Question is Deleted"})
@@ -112,3 +110,8 @@ module.exports = questionRouter;
     //         question: createdQuestion.question
     //     })
     // }else {res.json({status: 403})}
+
+
+    
+        // const questions = exam.questions
+        // const deletQues = questions.filter(Object => Object._id===req.body.quesId)

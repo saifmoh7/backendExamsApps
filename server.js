@@ -10,7 +10,7 @@ const questionRouter = require("./routers/questionRouter.js");
 const app = express();
 const port = 5000;
 
-mongoose.connect('mongodb://localhost/backend', {
+mongoose.connect('mongodb+srv://examApps:13241324a@examapps.oiyn6ws.mongodb.net/test', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true,
