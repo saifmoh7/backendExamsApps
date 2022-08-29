@@ -6,6 +6,11 @@ const User = require("../mudels/userModel.js");
 
 const userRouter = express.Router();
 
+userRouter.get('/version', expressAsyncHandler(async (req, res) => {
+    const version = "0.0.1"
+    res.status(200).send(version)
+}));
+
 userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
     const user = await User.findOne({email: req.body.email})
     if (user) {
