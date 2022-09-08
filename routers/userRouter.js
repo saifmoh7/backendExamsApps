@@ -6,6 +6,13 @@ const User = require("../mudels/userModel.js");
 
 const userRouter = express.Router();
 
+
+
+userRouter.get('/version/url', expressAsyncHandler(async (req, res) => {
+    const url = "https://play.google.com/store/apps/details?id=host.exp.exponent"
+    res.status(200).send(url)
+}));
+
 userRouter.get('/version', expressAsyncHandler(async (req, res) => {
     const version = "0.0.1"
     res.status(200).send(version)
