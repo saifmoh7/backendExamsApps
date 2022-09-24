@@ -29,9 +29,9 @@ app.get('/', (req, res) => {
     res.send("server is ready")
 })
 
-app.use('/api/users', userRouter);
-app.use('/api/exams', examRouter);
-app.use('/api/questions', questionRouter);
+app.use('/api653/users', userRouter);
+app.use('/api653/exams', examRouter);
+app.use('/api653/questions', questionRouter);
 
 app.listen(process.env.PORT || port, () => {
     console.log(`Server at http://localhost:${port}`)
